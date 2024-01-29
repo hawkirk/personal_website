@@ -3,34 +3,16 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Hello! My name is Harrison Kirk.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+I'm interested in the intersection of data, technology, and public policy.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+I currently work on the Health team at [Mathematica](https://www.mathematica.org/) as a Data Analytics Developer, based in Los Angeles.
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+My other interests include urbanism, minimalism, harm reduction, writing, filmmaking, music production, traveling, hiking, and hanging out with my dog, [Wren](https://www.instagram.com/wrenvworld).
 
-## Tech Stack
+Check out my [resume](/resume/) and [project portfolio](/projects/) for more on my skills and interests.
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+### Colophon
 
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+This website was built with [Astro](https://github.com/withastro/astro) using a modified version of the [AstroPaper](https://github.com/satnaing/astro-paper) theme. Colors are based on the [Flexoki](https://stephango.com/flexoki) color scheme.

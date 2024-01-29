@@ -13,7 +13,6 @@ import { SOCIALS } from "@config";
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
@@ -31,15 +30,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         <li>
           <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://hawkirk.com/data/"
+          href="/projects/"
           >
-            Data
+            Projects
           </LinkButton>
         </li>
         <li>
           <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://hawkirk.com/writing/"
+          href="/writing/"
           >
             Writing
           </LinkButton>
@@ -47,7 +46,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         <li>
           <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://hawkirk.com/cv/"
+          href="/cv/"
           >
             Resume
           </LinkButton>
@@ -57,7 +56,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Links:</div>
+            <div class="social-links">Reach me:</div>
             <Socials />
           </div>
         )
@@ -86,19 +85,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
 
+    <Hr />
+
     {
       <section id="topics">
         <h2>Topics</h2>
         <p>topics go here</p>
         </section>
     }
-
-{
-  <section id="writing">
-    <h2>Writing</h2>
-    <p>Writing list goes here</p>
-    </section>
-}
 
   </main>
 
