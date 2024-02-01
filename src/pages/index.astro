@@ -5,6 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
+import LinkButton from "@components/LinkButton.astro";
 import getUniqueTags from "@utils/getUniqueTags";
 import Socials from "@components/Socials.astro";
 import { SOCIALS } from "@config";
@@ -73,18 +74,24 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     {
-      posts.length > 0 && (
+      sortedPosts.length > 0 && (
         <>
           <section id="featured">
             <h2>Writing</h2>
             <ul>
-              {posts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}/`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
+              {sortedPosts.sort((a, b) => new Date(b.data.pubDatetime).getTime() - new Date(a.data.pubDatetime).getTime()).map(({ data, slug }) => {
+                const date = new Date(data.pubDatetime);
+                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+                return (
+                  <li key={slug}>
+                    <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
+                      <span style={{fontFamily: 'monospace'}}>{formattedDate}</span>
+                      <span><a href={`/posts/${slug}/`} style={{padding: '15px'}}>{data.title}</a></span>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         </>
