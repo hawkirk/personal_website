@@ -3,60 +3,33 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
+import getUniqueTags from "@utils/getUniqueTags";
 import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS } from "@config";
 
-const posts = await getCollection("blog");
+import getSortedPosts from "@utils/getSortedPosts";
+import Tag from "@components/Tag.astro";
 
+const posts = await getCollection("blog");
+const tags = getUniqueTags(posts);
 const sortedPosts = getSortedPosts(posts);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
-
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
+
     <section id="hero">
-      <p>
-        Welcome! Thanks for stopping by.
-      </p>
-      <p>
-        Explore:
-        <li>
-          <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="/projects/"
-          >
-            Projects
-          </LinkButton>
-        </li>
-        <li>
-          <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="/writing/"
-          >
-            Writing
-          </LinkButton>
-        </li>
-        <li>
-          <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="/resume/"
-          >
-            Resume
-          </LinkButton>
-        </li>
-      </p>
+      <p>This is a sentence.</p>
+      <p>This is another sentence.</p>
       {
-        // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Reach me:</div>
+            <div class="social-links">Connect with me:</div>
             <Socials />
           </div>
         )
@@ -67,11 +40,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts">
-          <h2>Latest</h2>
-          <ul>
-            {recentPosts.map(
-              ({ data, slug }, index) =>
+        <>
+          <section id="recent-posts">
+            <h2>Latest</h2>
+            <ul>
+              {recentPosts.map(({ data, slug }, index) =>
                 index < 1 && (
                   <Card
                     href={`/posts/${slug}/`}
@@ -79,22 +52,44 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                     secHeading={false}
                   />
                 )
-            )}
-          </ul>
-        </section>
+              )}
+            </ul>
+          </section>
+          {recentPosts.length > 1 && <Hr />}
+        </>
       )
     }
 
-    <Hr />
-
     {
-      <section id="topics">
-        <h2>Topics</h2>
-        <p>topics go here</p>
+      tags.length > 0 && (
+        <section id="topics">
+          <h2>Topics</h2>
+          <ul>
+            {tags.map(({ tag }) => <Tag {tag} size="sm" />)}
+          </ul>
         </section>
+        <Hr />
+      )
     }
 
-  </main>
+    {
+      posts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Writing</h2>
+            <ul>
+              {posts.map(({ data, slug }) => (
+                <Card
+                  href={`/posts/${slug}/`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+        </>
+      )
+    }
 
   <Footer />
 </Layout>
@@ -125,10 +120,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
+  #topics,
   #recent-posts {
     @apply pb-6 pt-12;
   }
   #featured h2,
+  #topics h2,
   #recent-posts h2 {
     @apply text-2xl font-semibold tracking-wide;
   }
