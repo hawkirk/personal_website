@@ -46,7 +46,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       sortedPosts.length > 0 && (
         <>
-          <section id="recent-posts">
+          <section id="latest">
             <h2>Latest</h2>
             <ul>
               <Card
@@ -76,7 +76,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       sortedPosts.length > 0 && (
         <>
-          <section id="featured">
+          <section id="writing">
             <h2>Writing</h2>
             <ul>
               {sortedPosts
@@ -130,14 +130,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
+  #writing,
   #topics,
-  #recent-posts {
+  #latest {
     @apply pb-6 pt-12;
   }
-  #featured h2,
   #topics h2,
-  #recent-posts h2 {
+  #writing h2,
+  #latest h2 {
     @apply text-2xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
