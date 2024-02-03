@@ -16,7 +16,7 @@ import Tag from "@components/Tag.astro";
 const posts = await getCollection("blog");
 const tags = getUniqueTags(posts);
 const sortedPosts = getSortedPosts(posts);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const mostRecentPost = sortedPosts[0];
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
@@ -44,23 +44,19 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     <Hr />
 
     {
-      recentPosts.length > 0 && (
+      sortedPosts.length > 0 && (
         <>
           <section id="recent-posts">
             <h2>Latest</h2>
             <ul>
-              {recentPosts.map(({ data, slug }, index) =>
-                index < 1 && (
-                  <Card
-                    href={`/posts/${slug}/`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
-                )
-              )}
+              <Card
+                href={`/posts/${mostRecentPost.slug}/`}
+                frontmatter={mostRecentPost.data}
+                secHeading={false}
+              />
             </ul>
           </section>
-          {recentPosts.length > 1 && <Hr />}
+          {sortedPosts.length > 1 && <Hr />}
         </>
       )
     }
@@ -83,24 +79,28 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <section id="featured">
             <h2>Writing</h2>
             <ul>
-              {sortedPosts.sort((a, b) => new Date(b.data.pubDatetime).getTime() - new Date(a.data.pubDatetime).getTime()).map(({ data, slug }) => {
-                const date = new Date(data.pubDatetime);
-                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+              {sortedPosts
+                .sort((a, b) => new Date(b.data.pubDatetime).getTime() - new Date(a.data.pubDatetime).getTime())
+                .map(({ data, slug }) => {
+                  const date = new Date(data.pubDatetime);
+                  const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
-                return (
-                  <li>
-                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                      <span><a href={`/posts/${slug}/`}>{data.title}</a></span>
-                      <span style={{fontFamily: 'monospace', }}>{formattedDate}</span>
-                    </div>
-                  </li>
-                );
-              })}
+                  return (
+                    <li>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span><a href={`/posts/${slug}/`}>{data.title}</a></span>
+                        <span style={{ fontFamily: 'monospace' }}>{formattedDate}</span>
+                      </div>
+                    </li>
+                  );
+                })}
             </ul>
           </section>
         </>
       )
     }
+    
+  </main>
 
   <Footer />
 </Layout>
