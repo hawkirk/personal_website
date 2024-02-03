@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://hawkirk.com/",
   author: "Harrison Kirk",
   desc: "Harrison Kirk - Data Engineering and Public Policy",
-  title: "hawkirk",
+  title: "Harrison Kirk",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,

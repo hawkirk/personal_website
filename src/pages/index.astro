@@ -88,7 +88,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
                 return (
-                  <li key={slug}>
+                  <li>
                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                       <span><a href={`/posts/${slug}/`}>{data.title}</a></span>
                       <span style={{fontFamily: 'monospace', }}>{formattedDate}</span>
