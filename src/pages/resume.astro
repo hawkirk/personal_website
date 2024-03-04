@@ -3,6 +3,7 @@ import { SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import ResumeComponent from "@components/Resume.astro";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 ---
 
@@ -10,10 +11,7 @@ import Breadcrumbs from "@components/Breadcrumbs.astro";
     <Header />
     <Breadcrumbs />
     <main id="main-content">
-        <section id="hero">
-            <br>
-            <p>Resume goes here</p>
-        </section>
+        <ResumeComponent />
     </main>
   
     <Footer />
