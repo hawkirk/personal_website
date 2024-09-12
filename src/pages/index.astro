@@ -1,87 +1,52 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
-import LinkButton from "@components/LinkButton.astro";
-import getUniqueTags from "@utils/getUniqueTags";
-import Socials from "@components/Socials.astro";
-import { SOCIALS } from "@config";
-
-import getSortedPosts from "@utils/getSortedPosts";
-import Tag from "@components/Tag.astro";
-
-const posts = await getCollection("blog");
-const tags = getUniqueTags(posts);
-const sortedPosts = getSortedPosts(posts);
-const mostRecentPost = sortedPosts[0];
-const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
 
-    {
-      sortedPosts.length > 0 && (
-        <>
-          <section id="latest">
-            <h2>Latest</h2>
-            <ul>
-              <Card
-                href={`/posts/${mostRecentPost.slug}/`}
-                frontmatter={mostRecentPost.data}
-                secHeading={false}
-              />
-            </ul>
-          </section>
-          {sortedPosts.length > 1 && <Hr />}
-        </>
-      )
-    }
+    <section id="hero">
 
-    {
-        tags.length > 0 && (
-          <>
-            <section id="topics">
-              <h2>Topics</h2>
-              <ul>
-                {tags.map(({ tag }) => <Tag {tag} size="sm" />)}
-              </ul>
-            </section>
-            {tags.length > 1 && <Hr />}
-          </>
-      )
-    }
+      <p>
+        Hello! My name is <strong>Harrison Kirk</strong>.
+      </p>
 
-    {
-      sortedPosts.length > 0 && (
-        <>
-          <section id="writing">
-            <h2><a href='/posts/'>Writing</a></h2>
-            <ul>
-              {sortedPosts
-                .sort((a, b) => new Date(b.data.pubDatetime).getTime() - new Date(a.data.pubDatetime).getTime())
-                .map(({ data, slug }) => {
-                  const date = new Date(data.pubDatetime);
-                  const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      <p>
+        I'm a software engineer interested in the intersection of data, 
+        technology, and public policy.
+      </p>
 
-                  return (
-                    <li class="py-1">
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span><a href={`/posts/${slug}/`}>{data.title}</a></span>
-                        <span style={{ fontFamily: 'monospace' }}>{formattedDate}</span>
-                      </div>
-                    </li>
-                  );
-                })}
-            </ul>
-          </section>
-        </>
-      )
-    }
+      <br>
+
+      <figure>
+        <img src="/images/me_and_wren.jpeg" alt="Mojave">
+        <figcaption>Mojave National Preserve, January 2024.</figcaption>
+      </figure>
+
+      <br>
+
+      <p>
+        I currently work at <a href="https://www.mathematica.org/">Mathematica</a> on the Data Platform team and am based in Los Angeles, California. I've worked 
+        previously for <a href="https://www.edanalytics.org/">Education Analytics</a> and the <a href="https://www.slocounty.ca.gov/departments/health-agency/behavioral-health">County of San Luis
+        Obispo Behavioral Health Department</a>.
+      </p>
+
+      <p>
+        Check out my
+        <a href="/resume/">resume</a> or <a href="/projects/">portfolio</a> for more on my 
+        skills and experience.
+      </p>
+
+      <br>
+
+      <p>
+        <a href="mailto:harrison@hawkirk.com">Get in touch!</a>
+      </p>
+
+    </section>
       
   </main>
 
@@ -105,25 +70,22 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero p {
     @apply my-2;
   }
+  #hero a {
+    @apply underline hover:text-skin-accent;
+  }
+  #hero img {
+    @apply rounded;
+  }
+  #hero strong {
+    @apply font-bold;
+  }
+  #hero figcaption {
+    @apply italic text-sm;
+  }
   .social-wrapper {
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
   }
   .social-links {
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
-  /* ===== Featured & Recent Posts Sections ===== */
-  #writing,
-  #topics,
-  #latest {
-    @apply pb-6 pt-12;
-  }
-  #topics h2,
-  #writing h2,
-  #latest h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
   }
 </style>

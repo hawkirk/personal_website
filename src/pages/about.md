@@ -12,6 +12,6 @@ Explore:
 - [Writing](/posts/)
 - [Resume](/resume/)
 
-Outside of work, my other interests include urbanism, minimalism, harm reduction, filmmaking, music production, traveling, hiking, exploring LA, and hanging out with my dog, [Wren](https://www.instagram.com/wrenvworld).
+Outside of work, my other interests include urbanism, minimalism, harm reduction, filmmaking, music production, traveling, hiking, exploring LA, and hanging out with my dog, Wren.
 
-![pic](@assets/images/me_and_wren.jpg)*Mojave National Preserve, January 2024.*
+![pic](@assets/images/me_and_wren.jpeg)*Mojave National Preserve, January 2024.*

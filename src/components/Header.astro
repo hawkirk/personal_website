@@ -1,10 +1,9 @@
 ---
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
-import LinkButton from "./LinkButton.astro";
 
 export interface Props {
-  activeNav?: "projects" | "about" | "writing" | "colophon" | "tags";
+  activeNav?: "projects" | "about" | "resume" | "colophon" | "tags";
 }
 
 const { activeNav } = Astro.props;
@@ -60,10 +59,9 @@ const { activeNav } = Astro.props;
               Projects
             </a>
           </li>
-          </li>
           <li>
-            <a href="/about/" class={activeNav === "about" ? "active" : ""}>
-              About
+            <a href="/resume/" class={activeNav === "resume" ? "active" : ""}>
+              Resume
             </a>
           </li>
           {
@@ -131,9 +129,6 @@ const { activeNav } = Astro.props;
   nav ul li:nth-last-child(1),
   nav ul li:nth-last-child(2) {
     @apply col-span-1;
-  }
-  nav a.active {
-    @apply underline decoration-wavy decoration-2 underline-offset-4;
   }
   nav a.active svg {
     @apply fill-skin-accent;
