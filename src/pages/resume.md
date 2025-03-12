@@ -5,20 +5,21 @@ title: "Resume"
 
 ## Experience
 
-### Software Engineer  
+### Software Engineer, Data Platform
 **Mathematica** | *Remote, USA*   
 Jan. 2023 – Present
-- Develop, maintain, and deploy robust data science and analytics pipelines using Python, C#/.NET, and cloud platforms like AWS and Snowflake to support healthcare research. Orchestrate and automate ETL processes with Luigi and custom DAGs.
-- Develop software tools—including standalone applications, Python modules, and command line interfaces—to enhance productivity for researchers, data scientists, and analysts.
-- Design and build data models in Snowflake, MySQL, and PostgreSQL, optimizing for performance and scalability in environments handling millions of records. Write performant SQL queries for front-end analytics reports and dashboards.
-- Implement rigorous automated quality assurance checks to test data quality and validation.
+- Build, maintain, and deploy scalable ETL data analytics pipelines using Python, SQL, C#/.NET, and cloud platforms including Snowflake, Azure, Databricks, and AWS services to support healthcare research. Orchestrate workflows using Luigi and custom orchestration frameworks.
+- Lead technical efforts on projects, guiding small teams through architecture design, task planning, code reviews, and implementation.
+- Develop specialized software tools—including standalone applications, Python libraries, and command-line interfaces—to automate research workflows and enhance productivity across the data science lifecycle.
+- Design and implement optimized data models in Snowflake, MySQL, and PostgreSQL, ensuring high performance and scalability for datasets with millions of records. Write efficient SQL queries for analytic reporting and dashboard integration.
+- Implement comprehensive automated testing frameworks and CI/CD pipelines to ensure data accuracy and software reliability.
 
 ### Data Analyst
 **Education Analytics** | *Madison, WI*    
 Jun. 2021 - Nov. 2022
-- Played a key role in the production phase of multiple research, evaluation, and predictive analytics modeling projects involving big data. Designed and implemented automation code in R and SQL to conduct rigorous quality assurance and data integrity checks.
-- Engineered a client-facing dashboard using R Shiny, HTML, and CSS, integrating data from a Snowflake data warehouse via SQL. Collaborated closely with stakeholders to refine the design through iterative feedback, crafting R-based analyses and visualizations.
-- Mentored an intern by conducting code reviews, providing professional development guidance, and delivering training in data analytics best practices.
+- Contributed to the production phase of research, evaluation, and predictive modeling projects utilizing large-scale datasets. Developed automation scripts in R and SQL to enforce data integrity and quality standards.
+- Developed an interactive client-facing dashboard using R Shiny integrated with Snowflake, iteratively enhancing functionality and design through close collaboration with stakeholders.
+- Mentored and supervised an intern, providing detailed code reviews, professional guidance, and training in data analytics best practices.
 
 ### Data Analyst Intern
 **SLO County Behavioral Health Dept.** | *San Luis Obispo, CA*    
@@ -38,13 +39,13 @@ Sep. 2020 - Jun. 2021
 **B.A. Political Science, Minor in Statistics**  
 2017 - 2021
 
-- **Honors**: Dean's List (4x), SAGE Publishing Award, Associated Collegiate Press Award
 - Upper-level coursework in computing, applied regression analysis, statistical modeling, and experimental design.
+- **Honors**: Dean's List (4x), SAGE Publishing Award, Associated Collegiate Press Award
 
 ---
 
 ## Skills
 - **Languages**: Python, SQL, R, C#/.NET, SAS, HTML & CSS
-- **Tools & Frameworks**: AWS (S3, EC2, RDS, Redshift), Snowflake, Airflow, Luigi, Git, MySQL, PostgreSQL
-- **Methods**: ETL, Data Visualization, Data Quality Automation, Data Modeling, Data Analysis, Statistical Modeling, Web Scraping
-- **Other**: Linux, Shell scripting, Agile Development, CI/CD
+- **Tools & Frameworks**: AWS (S3, EC2, RDS, Lambda, CodeBuild), Snowflake, Databricks, Azure, Airflow, Luigi, Git, MySQL, PostgreSQL
+- **Methods**: ETL/ELT, Data Quality Automation, Data Modeling, Data Analysis, Statistical Modeling, Web Scraping, Object Oriented Programming, API Development
+- **Other**: Linux,Bash and shell scripting, Agile Development, CI/CD
