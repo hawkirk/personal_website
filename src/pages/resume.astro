@@ -1,0 +1,200 @@
+---
+import { SITE } from "@config";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import Layout from "@layouts/Layout.astro";
+import resume from "../data/resume.json";
+
+/** Format "2023-01" → "Jan. 2023", or "" → "Present" */
+function formatDate(dateStr: string): string {
+  if (!dateStr) return "Present";
+  const [year, month] = dateStr.split("-");
+  if (!month) return year;
+  const monthNames = [
+    "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+    "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec.",
+  ];
+  return `${monthNames[parseInt(month, 10) - 1]} ${year}`;
+}
+
+/**
+ * Group consecutive work entries at the same company into
+ * { company, location, roles[] } so we can render them together.
+ */
+type WorkEntry = (typeof resume.work)[number];
+type GroupedWork = {
+  company: string;
+  location: string;
+  roles: WorkEntry[];
+};
+
+const groupedWork: GroupedWork[] = [];
+for (const job of resume.work) {
+  const last = groupedWork[groupedWork.length - 1];
+  if (last && last.company === job.name) {
+    last.roles.push(job);
+  } else {
+    groupedWork.push({
+      company: job.name,
+      location: job.location ?? "",
+      roles: [job],
+    });
+  }
+}
+---
+
+<Layout title={`Resume | ${SITE.title}`}>
+  <Header activeNav="resume" />
+  <Breadcrumbs />
+  <main id="main-content">
+    <section id="resume" class="mb-28 max-w-3xl">
+      <h1 class="text-2xl tracking-wider sm:text-3xl">Resume</h1>
+
+      {/* ── Experience ── */}
+      <h2>Experience</h2>
+
+      {groupedWork.map((group, gi) => (
+        <div class:list={["entry", { "mt-8": gi > 0 }]}>
+          {group.roles.map((role, ri) => (
+            <div class:list={["role", { "mt-5": ri > 0 }]}>
+              <div class="role-header">
+                <h3>{role.position}</h3>
+                <span class="dates">
+                  {formatDate(role.startDate)} &ndash; {formatDate(role.endDate)}
+                </span>
+              </div>
+              <div class="company-line">
+                <span>{group.company}</span>
+                {group.location && <span class="location"> &middot; {group.location}</span>}
+              </div>
+              {role.highlights.length > 0 && (
+                <ul>
+                  {role.highlights.map((h: string) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+
+      {/* ── Education ── */}
+      <h2>Education</h2>
+
+      {resume.education.map((edu) => (
+        <div class="entry">
+          <div class="role-header">
+            <h3>{edu.studyType} {edu.area}</h3>
+            <span class="dates">{edu.startDate} &ndash; {edu.endDate}</span>
+          </div>
+          <div class="company-line">{edu.institution}</div>
+
+          {edu.courses && edu.courses.length > 0 && (
+            <p class="detail">
+              Upper-level coursework in {edu.courses.map((c: string, i: number) =>
+                i < edu.courses.length - 1 ? `${c.toLowerCase()}, ` : `and ${c.toLowerCase()}.`
+              )}
+            </p>
+          )}
+
+          {edu.honors && edu.honors.length > 0 && (
+            <p class="detail">
+              <strong>Honors</strong>: {(edu.honors as string[]).join(", ")}
+            </p>
+          )}
+        </div>
+      ))}
+
+      {/* ── Skills ── */}
+      <h2>Skills</h2>
+
+      <dl class="skills">
+        {resume.skills.map((cat) => (
+          <>
+            <dt>{cat.name}</dt>
+            <dd>{cat.keywords.join(", ")}</dd>
+          </>
+        ))}
+      </dl>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Page title ── */
+  h1 {
+    @apply mb-10;
+  }
+
+  /* ── Section labels ── */
+  h2 {
+    @apply text-sm font-semibold uppercase tracking-[0.15em] mt-12 mb-6 pb-2;
+    border-bottom: 1px solid rgb(var(--color-border));
+  }
+
+  h2:first-of-type {
+    @apply mt-0;
+  }
+
+  /* ── Job title ── */
+  h3 {
+    @apply text-lg font-semibold m-0;
+  }
+
+  /* ── Company + location line ── */
+  .company-line {
+    @apply text-sm mt-0.5 mb-0;
+    opacity: 0.6;
+  }
+
+  .location {
+    opacity: 0.75;
+  }
+
+  /* ── Role row ── */
+  .role {
+    @apply mt-2;
+  }
+
+  .role-header {
+    @apply flex items-baseline justify-between gap-4 flex-wrap;
+  }
+
+  .dates {
+    @apply text-sm m-0 shrink-0;
+    opacity: 0.55;
+  }
+
+  /* ── Detail paragraphs (coursework, honors) ── */
+  .detail {
+    @apply text-sm mt-2 mb-0 leading-relaxed;
+  }
+
+  /* ── Highlight bullets ── */
+  ul {
+    @apply mt-2 mb-0 pl-5 list-disc;
+  }
+
+  ul li {
+    @apply text-sm my-1 leading-relaxed;
+    opacity: 0.85;
+  }
+
+  /* ── Skills definition list ── */
+  .skills {
+    @apply grid gap-x-6 gap-y-2 text-sm;
+    grid-template-columns: auto 1fr;
+  }
+
+  .skills dt {
+    @apply font-semibold whitespace-nowrap;
+  }
+
+  .skills dd {
+    @apply m-0 leading-relaxed;
+    opacity: 0.85;
+  }
+</style>
