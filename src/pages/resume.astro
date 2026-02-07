@@ -131,7 +131,7 @@ for (const job of resume.work) {
 
   /* ── Section labels ── */
   h2 {
-    @apply text-sm font-semibold uppercase tracking-[0.15em] mt-12 mb-6 pb-2;
+    @apply text-lg font-semibold uppercase tracking-[0.15em] mt-12 mb-6 pb-2;
     border-bottom: 1px solid rgb(var(--color-border));
   }
 
@@ -170,7 +170,7 @@ for (const job of resume.work) {
 
   /* ── Detail paragraphs (coursework, honors) ── */
   .detail {
-    @apply text-sm mt-2 mb-0 leading-relaxed;
+    @apply mt-2 mb-0 leading-relaxed;
   }
 
   /* ── Highlight bullets ── */
@@ -179,13 +179,13 @@ for (const job of resume.work) {
   }
 
   ul li {
-    @apply text-sm my-1 leading-relaxed;
+    @apply my-1 leading-relaxed;
     opacity: 0.85;
   }
 
   /* ── Skills definition list ── */
   .skills {
-    @apply grid gap-x-6 gap-y-2 text-sm;
+    @apply grid gap-x-6 gap-y-2;
     grid-template-columns: auto 1fr;
   }
 
