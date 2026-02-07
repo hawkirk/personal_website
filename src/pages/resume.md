@@ -5,8 +5,8 @@ title: "Resume"
 
 ## Experience
 
-### Software Engineer, Data Platform
-**Mathematica** | *Remote, USA*   
+### Senior Data Engineer
+**Mathematica** | *Remote, USA*
 Jan. 2023 – Present
 - Build, maintain, and deploy scalable ETL data analytics pipelines using Python, SQL, C#/.NET, and cloud platforms including Snowflake, Azure, Databricks, and AWS services to support healthcare research. Orchestrate workflows using Luigi and custom orchestration frameworks.
 - Lead technical efforts on projects, guiding small teams through architecture design, task planning, code reviews, and implementation.
