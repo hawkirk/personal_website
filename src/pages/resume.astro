@@ -86,24 +86,25 @@ for (const job of resume.work) {
       {resume.education.map((edu) => (
         <div class="entry">
           <div class="role-header">
-            <h3>{edu.studyType} {edu.area}</h3>
+            <h3>{edu.institution}</h3>
             <span class="dates">{edu.startDate} &ndash; {edu.endDate}</span>
           </div>
-          <div class="company-line">{edu.institution}</div>
+          <div class="company-line">{edu.studyType} {edu.area}</div>
 
-          {edu.courses && edu.courses.length > 0 && (
-            <p class="detail">
-              Upper-level coursework in {edu.courses.map((c: string, i: number) =>
-                i < edu.courses.length - 1 ? `${c.toLowerCase()}, ` : `and ${c.toLowerCase()}.`
-              )}
-            </p>
-          )}
-
-          {edu.honors && edu.honors.length > 0 && (
-            <p class="detail">
-              <strong>Honors</strong>: {(edu.honors as string[]).join(", ")}
-            </p>
-          )}
+          <ul>
+            {edu.courses && edu.courses.length > 0 && (
+              <li>
+                Upper-level coursework in {edu.courses.map((c: string, i: number) =>
+                  i < edu.courses.length - 1 ? `${c.toLowerCase()}, ` : `and ${c.toLowerCase()}.`
+                )}
+              </li>
+            )}
+            {edu.honors && edu.honors.length > 0 && (
+              <li>
+                <strong>Honors</strong>: {(edu.honors as string[]).join(", ")}
+              </li>
+            )}
+          </ul>
         </div>
       ))}
 

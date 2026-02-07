@@ -2,6 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import { Image } from "astro:assets";
+import heroImage from "@assets/images/me_and_wren.jpeg";
 ---
 
 <Layout>
@@ -22,7 +24,7 @@ import Footer from "@components/Footer.astro";
       <br>
 
       <figure>
-        <img src="/images/me_and_wren.jpeg" alt="Mojave">
+        <Image src={heroImage} alt="Mojave" width={768} quality={80} format="webp" />
         <figcaption>Mojave National Preserve, January 2024.</figcaption>
       </figure>
 
