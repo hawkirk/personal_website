@@ -3,7 +3,8 @@ layout: ../layouts/ProjectsLayout.astro
 title: "Projects"
 ---
 
-All code can be found on my [GitHub](https://github.com/hawkirk).
+## [Marmot](https://marmotmanuscript.com)
+A focused, distraction-free writing app for novelists. Built for macOS.
 
 ## [PyCongress](https://github.com/hawkirk/PyCongress)
 Python client for Congress.gov's API.
