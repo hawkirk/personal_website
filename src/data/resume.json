@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Harrison Kirk",
-    "label": "Senior Data Engineer",
+    "label": "Data Engineer",
     "email": "harrison@hawkirk.com",
     "url": "https://hawkirk.com",
     "profiles": [
@@ -20,56 +20,64 @@
   },
   "work": [
     {
-      "name": "Mathematica",
-      "location": "Remote, USA",
-      "position": "Senior Data Engineer",
-      "startDate": "2023-01",
+      "name": "Green River",
+      "url": "https://greenriver.com/",
+      "location": "Remote",
+      "position": "Data Engineer",
+      "startDate": "2026-10",
       "endDate": "",
-      "summary": "",
-      "highlights": [
-        "Build, maintain, and deploy scalable ETL data analytics pipelines using Python, SQL, C#/.NET, and cloud platforms including Snowflake, Azure, Databricks, and AWS services to support healthcare research. Orchestrate workflows using Luigi and custom orchestration frameworks.",
-        "Lead technical efforts on projects, guiding small teams through architecture design, task planning, code reviews, and implementation.",
-        "Develop specialized software tools\u2014including standalone applications, Python libraries, and command-line interfaces\u2014to automate research workflows and enhance productivity across the data science lifecycle.",
-        "Design and implement optimized data models in Snowflake, MySQL, and PostgreSQL, ensuring high performance and scalability for datasets with millions of records. Write efficient SQL queries for analytic reporting and dashboard integration.",
-        "Implement comprehensive automated testing frameworks and CI/CD pipelines to ensure data accuracy and software reliability.",
-        "Promoted from Data Engineer to Senior Data Engineer in February 2026."
-      ]
+      "summary": "Supporting data engineering for government agencies, homeless service providers, and social impact organizations.",
+      "highlights": []
+    },
+    {
+      "name": "Mathematica",
+      "url": "https://www.mathematica.org/",
+      "location": "Remote",
+      "position": "Senior Data Engineer",
+      "startDate": "2026-02",
+      "endDate": "2026-10",
+      "summary": "Led technical work on healthcare research projects, guiding development teams through architecture design, planning, code review, and implementation.",
+      "highlights": []
+    },
+    {
+      "name": "Mathematica",
+      "url": "https://www.mathematica.org/",
+      "location": "Remote",
+      "position": "Data Engineer",
+      "startDate": "2023-01",
+      "endDate": "2026-02",
+      "summary": "Built and deployed ETL pipelines in Python, SQL, and C#/.NET on Snowflake, Databricks, Azure, and AWS to support healthcare research, and developed internal tools to automate research workflows. Automated data validation and QA with testing frameworks and CI/CD pipelines.",
+      "highlights": []
     },
     {
       "name": "Education Analytics",
+      "url": "https://www.edanalytics.org/",
       "location": "Madison, WI",
       "position": "Data Analyst",
       "startDate": "2021-06",
       "endDate": "2022-11",
-      "summary": "",
-      "highlights": [
-        "Contributed to the production phase of research, evaluation, and predictive modeling projects utilizing large-scale datasets. Developed automation scripts in R and SQL to enforce data integrity and quality standards.",
-        "Developed an interactive client-facing dashboard using R Shiny integrated with Snowflake, iteratively enhancing functionality and design through close collaboration with stakeholders.",
-        "Mentored and supervised an intern, providing detailed code reviews, professional guidance, and training in data analytics best practices."
-      ]
+      "summary": "Wrote R and SQL code to produce analyses for education research and evaluation projects. Built and deployed interactive visualization tools for clients.",
+      "highlights": []
     },
     {
       "name": "SLO County Health Agency",
+      "url": "https://www.slocounty.ca.gov/departments/slo-health/public-health",
       "location": "San Luis Obispo, CA",
       "position": "Data Analyst Intern",
       "startDate": "2019-09",
       "endDate": "2021-06",
-      "summary": "",
-      "highlights": [
-        "Cleaned, reshaped, and analyzed public health data to support County research evaluation programs.",
-        "Led the development of an innovative patient tracking dashboard for a psychiatric care facility, improving patient management and care coordination."
-      ]
+      "summary": "Analyzed public health data for county program evaluations and led development of a patient tracking dashboard for a psychiatric care facility.",
+      "highlights": []
     },
     {
       "name": "Mustang Media Group",
+      "url": "https://mustangnews.net/",
       "location": "San Luis Obispo, CA",
       "position": "Data Reporter",
       "startDate": "2020-09",
       "endDate": "2021-06",
-      "summary": "",
-      "highlights": [
-        "Researched, wrote, and edited award-winning news articles on data-driven issues in the Cal Poly community."
-      ]
+      "summary": "Researched and wrote award-winning, data-driven news articles about the Cal Poly community.",
+      "highlights": []
     }
   ],
   "education": [
